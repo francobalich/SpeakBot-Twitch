@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="img/user.png">
+    <title>SpeakBot-Twitch</title>
+</head>
+<body>
+    <div class="msg" id="msgBox">
+        <div class="userContainer">
+            <img class="userImg" src="img/user.png" alt="logo usuario">
+        </div>
+        <div class="textContainer"> 
+            <p class="username" id="txtUsername">Franco</p>
+            <p class="msgText" id="txtText">-</p>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

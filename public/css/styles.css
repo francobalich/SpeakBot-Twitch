@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color:transparent;
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+}
+.msg{
+    position: absolute;
+    right: 50px;
+    bottom: 100px;
+    background-color: #000;
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    width: 0px;
+    overflow: hidden;
+    transition: width ease 1.2s;
+    opacity: 0.8;
+    box-shadow: -14px 14px 34px -4px rgba(0,0,0,0.4);
+    -webkit-box-shadow: -14px 14px 34px -4px rgba(0,0,0,0.4);
+    -moz-box-shadow: -14px 14px 34px -4px rgba(0,0,0,0.4);
+}
+.msg:hover{
+    width: 600px;
+}
+.userContainer{
+    justify-content: center;
+    display: flex;
+    background-color: white;
+    width: 25%;
+    border-radius: 15px 0 0 15px ;
+}
+.userImg{
+    width: 75px;
+    height: 75px;
+    margin:auto;
+}
+.textContainer{
+    padding: 20px 20px;
+    width: 500px;
+}
+.username{
+    font-weight: bold;
+    color: white;
+    font-size: 2.5rem;
+}
+.msgText{
+    font-size: 1.5rem;
+    color: white;
+    width: 300px;
+    width: 100%;
+}
+.emoteContainer{
+    width: 100vw;
+    height: 100px;
+}
