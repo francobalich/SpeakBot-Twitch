@@ -2,6 +2,9 @@
 // Revisar si es compatible con tu navegador en
 // https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance
 
+/* global SpeechSynthesisUtterance, speechSynthesis */
+/* eslint no-undef: ["error", { "typeof": true }] */
+
 const u = new SpeechSynthesisUtterance()
 
 u.text = '' // Mensaje inicial

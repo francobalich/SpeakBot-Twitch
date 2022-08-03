@@ -1,6 +1,8 @@
+/* global io, SpeechSynthesisUtterance, speechSynthesis */
+/* eslint no-undef: ["error", { "typeof": true }] */
+
 const txtUsername = document.getElementById('txtUsername')
 const txtText = document.getElementById('txtText')
-const mensajes = document.getElementById('mensajes')
 const msgBox = document.getElementById('msgBox')
 // La comunicacion por Sockets la realizaremos por el puerto 3000
 const socket = io('http://localhost:3000/')
@@ -11,9 +13,6 @@ u.lang = 'es-ES'
 u.rate = 1
 
 // Funciones
-const enviarMensaje = (etiqueta, mensaje) => {
-  socket.emit(etiqueta, mensaje)
-}
 const ocultarMensaje = () => {
   console.log('Fin timer')
   msgBox.style.width = '0px'
@@ -29,11 +28,6 @@ socket.on('text', (data) => {
   txtText.innerHTML = data
   setTimeout(ocultarMensaje, 10000)
 })
-// Sockets para recibir el html del emote
-socket.on('emote', (data) => {
-  emoteContainer.innerHTML = data
-})
-
 // Sockets para el mensaje a hablar
 socket.on('speak', (data) => {
   u.text = data

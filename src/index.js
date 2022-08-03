@@ -1,3 +1,4 @@
+/* eslint no-undef: ["error", { "typeof": true }] */
 // Require necesario para leer las variables de entorno del archivo .env
 require('dotenv').config()
 // Instanciación de los objetos necesarios para crear un servidor local con Node.JS
@@ -53,6 +54,7 @@ const iniciarServer = () => {
   })
 }
 // Instanciamos el cliente de tmi (bot)
+/* eslint new-cap: ["error", { "newIsCap": false }] */
 const client = new tmi.client(options)
 
 // SOCKETS
@@ -144,7 +146,7 @@ client.on('chat', async (target, ctx, message, seft) => {
       console.log(chiste)
       leer(chiste)
     }
-    if (ctx.username != 'streamelements') {
+    if (ctx.username !== 'streamelements') {
       const mensajeTratado = await msgEdit(ctx, message)
       refreshFront(ctx.username, mensajeTratado)
     }
