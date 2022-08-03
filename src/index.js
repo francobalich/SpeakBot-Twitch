@@ -1,10 +1,11 @@
+// Require necesario para leer las variables de entorno del archivo .env
+require("dotenv").config();
 // Instanciación de los objetos necesarios para crear un servidor local con Node.JS
 const express = require('express');
 const path = require('path');
-const port = 3000;
+const port = process.env.PORT;
 const app = express();
 
-require("dotenv").config();
 // Paquete para poder crear el bot de twitch que puede recibir los mensajes del chat
 const tmi = require("tmi.js");
 
