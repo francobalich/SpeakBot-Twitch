@@ -4,6 +4,7 @@ const path = require('path');
 const port = 3000;
 const app = express();
 
+require("dotenv").config();
 // Paquete para poder crear el bot de twitch que puede recibir los mensajes del chat
 const tmi = require("tmi.js");
 
@@ -14,7 +15,7 @@ const io = require('socket.io')(server);
 //Vamos a utilizar Axios para acceder a la API de Twitch y poder obtener los link de los Emotes
 const axios = require('axios').default;
 
-//Datos de la cuenta de Twitch que utilizaran como bot
+// Datos de la cuenta de Twitch que utilizaran como bot que se leen el .env
 // Documentación https://dev.twitch.tv/docs/irc
 const options= {
     options:{
@@ -24,12 +25,12 @@ const options= {
         
     },
     identity: {
-        username: "*",//Nombre de usuario de la cuenta que se utilizara como bot
-        password: "*" //Se utiliza el oauth como contraseña
+        username: process.env.USERNAME,//Nombre de usuario de la cuenta que se utilizara como bot
+        password: process.env.PASSWORD //Se utiliza el oauth como contraseña
         // Para generar el oauth: https://twitchapps.com/tmi/
       },
       channels: [
-        "francolabs" //Nombre de usuario de la cuenta en la que el bot leera el chat
+        process.env.CHANNEL //Nombre de usuario de la cuenta en la que el bot leera el chat
       ]
 };
 
