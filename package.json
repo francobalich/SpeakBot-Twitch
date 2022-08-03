@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "standard",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
@@ -19,6 +19,10 @@
     "tmi.js": "1.5.0"
   },
   "devDependencies": {
-    "nodemon": "2.0.19"
+    "nodemon": "2.0.19",
+    "standard": "^17.0.0"
+  },
+  "eslintConfig": {
+    "extends":["./node_modules/standard/eslintrc.json"]
   }
 }
