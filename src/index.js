@@ -132,14 +132,28 @@ client.on("chat",async(target,ctx,message,seft)=>{
       let num = rollDice();
       client.say(target,`Sacaste un ${num}`);
     }
-    else if(mensaje[0]==="!speak"){
+    if(mensaje[0]==="!speak"){
       let textoMensaje=message.replace(mensaje[0],'');
       hablar(ctx.username,textoMensaje);
     }
-    else if(ctx.username!="streamelements"){
+    if(ctx.username!="streamelements"){
       const mensajeTratado= await msgEdit(ctx,message);
       refreshFront(ctx.username,mensajeTratado);
     } }
+    if (commandName === "!help" || commandName === "!command") {
+      let comandos="";
+      
+      Object.keys(chatDialogs).forEach(comando => {
+        comandos += comando +" - ";
+      });
+      let ultimo= comandos.lastIndexOf(" - ");
+      comandos=comandos.substring(0,ultimo);
+      client.say(
+        target,
+        `Los comandos disponibles son: `+comandos
+      );
+      console.log(target)
+    }
 })
 
 // Inicia el server Node.JS
