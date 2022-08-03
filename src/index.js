@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const port = process.env.PORT;
 const app = express();
+const chatDialogs = require("./json/chats")
 
 // Paquete para poder crear el bot de twitch que puede recibir los mensajes del chat
 const tmi = require("tmi.js");
@@ -34,6 +35,8 @@ const options= {
         process.env.CHANNEL //Nombre de usuario de la cuenta en la que el bot leera el chat
       ]
 };
+
+// Importa el archivo JSON con los chats para el bot
 
 // Inicio server Node.JS
 const iniciarServer=()=>{
@@ -68,11 +71,6 @@ const hablar=(username,msg)=>{
     mensaje =`${username} dice ${msg}`;
   }
   io.emit("speak",`${mensaje}`);
-}
-// Función que envia por sockets la respuesta a la pregunta que le hicimos al bot
-const preguntar=(username,msg)=>{
-  let mensaje =`${username}, Soy el bot que les da ordenes`
-  io.emit("pregunta",`${mensaje}`);
 }
 
 // Edita el mensaje del chat, para insertar los html necesario para agregar las imagenes de los emotes en los mensajes
@@ -120,31 +118,28 @@ client.on("chat",async(target,ctx,message,seft)=>{
     if(seft)return;
     let mensaje= message.split(' ');
     const commandName = message.trim()
-    if(commandName==="!hola"){
-        client.say(target, `Bienvenido ${ctx.username}`)
-    }
-    if(commandName==="!streamdeck"){
-      client.say(target,`No esta funcionando, ahora es un destructor de drivers de teclado`)
-    }
-    if(commandName==="!proyectos"){
-      client.say(target,`Actualmente estamos trabajando en un StreamDeck con Arduino, un bot de Twitch e integrando robots al chat`)
+    if (commandName.substring(0, 1) === "!") {
+
+    let msgRespuesta = chatDialogs[commandName];
+    if (msgRespuesta != undefined) {
+      if (msgRespuesta.includes("&USER&")) {
+        let msgOriginal = msgRespuesta.split("&");
+        msgRespuesta = msgOriginal[0] + ctx.username + msgOriginal[2];
+      }
+      client.say(target, msgRespuesta);
     }
     if(commandName==="!dado"){
       let num = rollDice();
       client.say(target,`Sacaste un ${num}`);
     }
-    if(mensaje[0]==="!speak"){
+    else if(mensaje[0]==="!speak"){
       let textoMensaje=message.replace(mensaje[0],'');
       hablar(ctx.username,textoMensaje);
     }
-    if(message==="!¿Quien es ese bot?"){
-      preguntar(ctx.username,message);
-    }
-
-    if(ctx.username!="streamelements"){
+    else if(ctx.username!="streamelements"){
       const mensajeTratado= await msgEdit(ctx,message);
       refreshFront(ctx.username,mensajeTratado);
-    } 
+    } }
 })
 
 // Inicia el server Node.JS
