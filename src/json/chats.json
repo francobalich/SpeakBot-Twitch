@@ -1,0 +1,10 @@
+{   
+    "!hola"         : "Hola &USER& bienvenido/a al chat!👋",
+    "!chau"         : "Chauu &USER&!! Nos vemos en otro stream👋",
+    "!twitter"      :"Tiene que agregar tu Twitter en el archivo chats.json",
+    "!tiktok"       :"Tiene que agregar tu TikTok en el archivo chats.json",
+    "!ig"           :"Tiene que agregar tu Instagram en el archivo chats.json",
+    "!instagram"    :"Tiene que agregar tu Instagram en el archivo chats.json",
+    "!yt"           :"Tiene que agregar tu YouTube en el archivo chats.json",
+    "!youtube"      :"Tiene que agregar tu YouTube en el archivo chats.json"
+}
