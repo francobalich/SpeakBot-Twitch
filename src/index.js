@@ -6,7 +6,7 @@ const path = require('path');
 const port = process.env.PORT;
 const app = express();
 const chatDialogs = require("./json/chats")
-
+const chistes = require("./json/chistes")
 // Paquete para poder crear el bot de twitch que puede recibir los mensajes del chat
 const tmi = require("tmi.js");
 
@@ -72,7 +72,13 @@ const hablar=(username,msg)=>{
   }
   io.emit("speak",`${mensaje}`);
 }
-
+// Función que envia por sockets el mensaje a leer 
+const leer=(msg)=>{
+  if(msg!==''){
+    io.emit("speak",`${msg}`);
+  }
+  
+}
 // Edita el mensaje del chat, para insertar los html necesario para agregar las imagenes de los emotes en los mensajes
 const msgEdit= async(ctx,msg)=>{
   if (ctx.emotes!=null){
@@ -135,11 +141,18 @@ client.on("chat",async(target,ctx,message,seft)=>{
     if(mensaje[0]==="!speak"){
       let textoMensaje=message.replace(mensaje[0],'');
       hablar(ctx.username,textoMensaje);
+    }if(mensaje[0]==="!chiste"){
+      let longitud =Object.keys(chistes).length
+      let numChiste = Math.floor(Math.random() * longitud);
+          let chiste = chistes[numChiste];
+          console.log(chiste);
+          leer(chiste);
     }
     if(ctx.username!="streamelements"){
       const mensajeTratado= await msgEdit(ctx,message);
       refreshFront(ctx.username,mensajeTratado);
     } }
+    
     if (commandName === "!help" || commandName === "!command") {
       let comandos="";
       
@@ -147,10 +160,11 @@ client.on("chat",async(target,ctx,message,seft)=>{
         comandos += comando +" - ";
       });
       let ultimo= comandos.lastIndexOf(" - ");
+      let comandosFijos = [" - !speak - !dado - !chiste - !help"]
       comandos=comandos.substring(0,ultimo);
       client.say(
         target,
-        `Los comandos disponibles son: `+comandos
+        `Los comandos disponibles son: `+comandos + comandosFijos
       );
       console.log(target)
     }
