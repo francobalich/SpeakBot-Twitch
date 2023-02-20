@@ -4,7 +4,7 @@
   "description": "Bot de Twitch que es capaz de leer mensajes del chat, responder comandos, contar chistes y reproduccir lo que digan en el chat.",
   "main": "index.js",
   "scripts": {
-    "lint": "standard",
+    "lint": "standard --fix",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
