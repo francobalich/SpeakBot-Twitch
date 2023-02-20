@@ -21,22 +21,16 @@ Una vez descargado ejecutar:
 ```
     npm install .
 ```
-o sino ejecutar los siguientes comandos:
+o sino ejecutar el comando:
 ```
-    npm install axios
-    npm install dotenv
-    npm install express
-    npm install socket.io
-    npm install speech-synthesis
-    npm install tmi.js
-    npm install nodemon --save-dev
+    npm i .
 ```
-Luego para ejecutar el programa, desde la terminal se pueden usar los siguientes scripts
+Luego para ejecutar el programa, desde la terminal se pueden usar los siguientes comandos:
 ```
     npm run dev (para modo desarrollador)
     npm run start (para solamente ejecutarlo)
 ```
 ## Configuración
-Para configurarlo debe crear una copia del archivo .env-example llamado .env y completar los datos del mismo
+Para configurarlo debe crear una copia del archivo .env-template y renombrarlo como .env y completar los datos del mismo.
 
-Ademas dentro de la carpeta src/json puede cargar los chistes que desee en el archivo chistes.json y comandos de chat en chats.json
+Ademas dentro de la carpeta /src/json puede cargar los chistes que desee en el archivo chistes.json y comandos de chat en chats.json
