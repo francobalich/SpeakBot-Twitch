@@ -34,3 +34,10 @@ Luego para ejecutar el programa, desde la terminal se pueden usar los siguientes
 Para configurarlo debe crear una copia del archivo .env-template y renombrarlo como .env y completar los datos del mismo.
 
 Ademas dentro de la carpeta /src/json puede cargar los chistes que desee en el archivo chistes.json y comandos de chat en chats.json
+
+## Formato de código
+Si en algun momento luego de realizar alguna modificacion en el codigo, usted desea darle formato a su codigo puede usar el comando:
+```
+    npm run lint
+```
+El cual le dará a su código el formato estándar de JavaScript.
