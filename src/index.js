@@ -4,7 +4,7 @@ require('dotenv').config()
 // Instanciación de los objetos necesarios para crear un servidor local con Node.JS
 const express = require('express')
 const path = require('path')
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 const app = express()
 const chatDialogs = require('./json/chats')
 const chistes = require('./json/chistes')
