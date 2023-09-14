@@ -15,7 +15,7 @@ u.rate = 1
 // Funciones
 const ocultarMensaje = () => {
   console.log('Fin timer')
-  msgBox.style.width = '0px'
+  // msgBox.style.width = '0px'
 }
 
 // Socket para el nombre de usaurio

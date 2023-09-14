@@ -36,6 +36,8 @@ const options = {
     process.env.CHANNEL // Nombre de usuario de la cuenta en la que el bot leera el chat
   ]
 }
+// Se carga el array de las cuentas que van a ser ignoradas
+const blackList = require('./json/blacklist').usernames
 
 // Importa el archivo JSON con los chats para el bot
 
@@ -146,12 +148,12 @@ client.on('chat', async (target, ctx, message, seft) => {
       console.log(chiste)
       leer(chiste)
     }
-    if (ctx.username !== 'streamelements') {
-      const mensajeTratado = await msgEdit(ctx, message)
-      refreshFront(ctx.username, mensajeTratado)
-    }
   }
-
+  console.log(!blackList.includes(ctx.username))
+  if (!blackList.includes(ctx.username)) {
+    const mensajeTratado = await msgEdit(ctx, message)
+    refreshFront(ctx.username, mensajeTratado)
+  }
   if (commandName === '!help' || commandName === '!command') {
     let comandos = ''
 
