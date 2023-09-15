@@ -28,9 +28,11 @@ socket.on('text', (data) => {
   setTimeout(ocultarMensaje, 7000)
 })
 // Sockets para el mensaje a hablar
-socket.on('speak', (data) => {
-  u.text = data
+socket.on('speak', async (data) => {
+  const resp = await JSON.parse(data)
+  u.text = resp.message
   speechSynthesis.speak(u)
+  txtUsername.style.color = resp.color
 })
 // Sockets para la respuesta a la pregunta que le hicimos al bot
 socket.on('pregunta', (data) => {

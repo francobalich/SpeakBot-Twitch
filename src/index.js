@@ -66,21 +66,21 @@ const refreshFront = (username, msg) => {
   io.emit('text', msg)
 }
 // Función que envia por sockets el mensaje a leer
-const hablar = (username, msg) => {
+const hablar = async (msg, color = '#fff', username = '') => {
   let mensaje
   if (msg === '') {
     mensaje = `Escribe algo,${username}`
   } else {
     mensaje = `${username} dice ${msg}`
   }
-  io.emit('speak', `${mensaje}`)
-}
-// Función que envia por sockets el mensaje a leer
-const leer = (msg) => {
-  if (msg !== '') {
-    io.emit('speak', `${msg}`)
+  const data = {
+    message: mensaje,
+    color
   }
+  const req = await JSON.stringify(data)
+  io.emit('speak', req)
 }
+
 // Edita el mensaje del chat, para insertar los html necesario para agregar las imagenes de los emotes en los mensajes
 const msgEdit = async (ctx, msg) => {
   if (ctx.emotes != null) {
@@ -140,13 +140,13 @@ client.on('chat', async (target, ctx, message, seft) => {
     }
     if (mensaje[0] === '!speak') {
       const textoMensaje = message.replace(mensaje[0], '')
-      hablar(ctx.username, textoMensaje)
+      hablar(textoMensaje, ctx.color, ctx.username)
     } if (mensaje[0] === '!chiste') {
       const longitud = Object.keys(chistes).length
       const numChiste = Math.floor(Math.random() * longitud)
       const chiste = chistes[numChiste]
       console.log(chiste)
-      leer(chiste)
+      hablar(chiste, ctx.color)
     }
   }
   if (!blackList.includes(ctx.username)) {
