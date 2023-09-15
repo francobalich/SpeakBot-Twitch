@@ -149,7 +149,6 @@ client.on('chat', async (target, ctx, message, seft) => {
       leer(chiste)
     }
   }
-  console.log(!blackList.includes(ctx.username))
   if (!blackList.includes(ctx.username)) {
     const mensajeTratado = await msgEdit(ctx, message)
     refreshFront(ctx.username, mensajeTratado)
