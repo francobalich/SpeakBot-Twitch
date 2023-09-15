@@ -151,7 +151,7 @@ client.on('chat', async (target, ctx, message, seft) => {
   }
   if (!blackList.includes(ctx.username)) {
     const mensajeTratado = await msgEdit(ctx, message)
-    refreshFront(ctx.username, mensajeTratado)
+    refreshFront(ctx['display-name'], mensajeTratado)
   }
   if (commandName === '!help' || commandName === '!command') {
     let comandos = ''
