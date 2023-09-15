@@ -1,59 +1,59 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
-body{
-    background-color:transparent;
-    width: 1920px;
-    height: 1080px;
-    display: flex;
+body {
+  background-color: transparent;
+  width: 1920px;
+  height: 1080px;
+  display: flex;
 }
-.msg{
-    position: absolute;
-    right: 50px;
-    bottom: 100px;
-    background-color: #000;
-    display: flex;
-    flex-direction: row;
-    border-radius: 15px;
-    width: 600px;
-    overflow: hidden;
-    transition: width ease 1.2s;
-    transition: right ease 1.2s;
-    opacity: 0.8;
-    box-shadow: -14px 14px 34px -4px rgba(0,0,0,0.4);
-    -webkit-box-shadow: -14px 14px 34px -4px rgba(0,0,0,0.4);
-    -moz-box-shadow: -14px 14px 34px -4px rgba(0,0,0,0.4);
+.msg {
+  position: absolute;
+  right: 30px;
+  bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 24px;
+  width: 450px;
+  overflow: hidden;
+  transition: width ease 1.2s;
+  transition: right ease 2s;
+  opacity: 0.9;
+  box-shadow: 10px 10px 17px 2px rgba(0, 0, 0, 0.29);
+  -webkit-box-shadow: 10px 10px 17px 2px rgba(0, 0, 0, 0.29);
+  -moz-box-shadow: 10px 10px 17px 2px rgba(0, 0, 0, 0.29);
 }
-.userContainer{
-    justify-content: center;
-    display: flex;
-    background-color: white;
-    width: 25%;
-    border-radius: 15px 0 0 15px ;
+.userContainer {
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  width: 25%;
 }
-.userImg{
-    width: 75px;
-    height: 75px;
-    margin:auto;
+.userImg {
+  width: 50px;
+  height: 50px;
+  margin: auto;
 }
-.textContainer{
-    padding: 20px 20px;
-    width: 500px;
+.textContainer {
+  padding: 20px 20px;
+  width: 500px;
+  background-color: #000;
 }
-.username{
-    font-weight: bold;
-    color: white;
-    font-size: 2.5rem;
+.username {
+  font-weight: bold;
+  color: white;
+  font-size: 2rem;
 }
-.msgText{
-    font-size: 1.5rem;
-    color: white;
-    width: 300px;
-    width: 100%;
+.msgText {
+  font-size: 1rem;
+  color: white;
+  width: 300px;
+  width: 100%;
 }
-.emoteContainer{
-    width: 100vw;
-    height: 100px;
+.emoteContainer {
+  width: 100vw;
+  height: 100px;
 }
