@@ -14,8 +14,7 @@ u.rate = 1
 
 // Funciones
 const ocultarMensaje = () => {
-  console.log('Fin timer')
-  // msgBox.style.width = '0px'
+  msgBox.style.right = '-1000px'
 }
 
 // Socket para el nombre de usaurio
@@ -24,9 +23,9 @@ socket.on('username', (data) => {
 })
 // Socket para el texto del mensaje
 socket.on('text', (data) => {
-  msgBox.style.width = '600px'
+  msgBox.style.right = '50px'
   txtText.innerHTML = data
-  setTimeout(ocultarMensaje, 10000)
+  setTimeout(ocultarMensaje, 7000)
 })
 // Sockets para el mensaje a hablar
 socket.on('speak', (data) => {
