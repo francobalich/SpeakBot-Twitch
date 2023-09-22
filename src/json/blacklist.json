@@ -1,9 +1,13 @@
 {
-  "usernames":
-  [
+  "usernames": [
     "alicevirtualassistant",
     "streamelements",
     "nightbot",
     "moobot"
+  ],
+  "characters": [
+    "<",
+    ">",
+    "+"
   ]
 }

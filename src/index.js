@@ -37,7 +37,9 @@ const options = {
   ]
 }
 // Se carga el array de las cuentas que van a ser ignoradas
-const blackList = require('./json/blacklist').usernames
+const blackListJson = require('./json/blacklist')
+const blackList = blackListJson.usernames
+const charToDelete = blackListJson.characters
 
 // Importa el archivo JSON con los chats para el bot
 
@@ -112,7 +114,7 @@ const getEmote = async (id) => {
 }
 
 // Función que simula la tirada de una dato
-function rollDice () {
+function rollDice() {
   const sides = 6
   return Math.floor(Math.random() * sides) + 1
 }
@@ -123,6 +125,11 @@ client.on('connected', () => {
 // Evento que se ejecuta cuando se envia un mensaje en el chat
 client.on('chat', async (target, ctx, message, seft) => {
   if (seft) return
+
+  charToDelete.forEach(char => {
+    message = message.replaceAll(char, '')
+  })
+
   const mensaje = message.split(' ')
   const commandName = message.trim()
   if (commandName.substring(0, 1) === '!') {
