@@ -114,7 +114,7 @@ const getEmote = async (id) => {
 }
 
 // Función que simula la tirada de una dato
-function rollDice() {
+function rollDice () {
   const sides = 6
   return Math.floor(Math.random() * sides) + 1
 }
