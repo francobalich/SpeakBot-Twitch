@@ -1,5 +1,7 @@
 /* eslint no-undef: ["error", { "typeof": true }] */
-/* global io, tts */
+/* global io */
+
+import tts from './tts.js'
 
 const txtUsername = document.getElementById('txtUsername')
 const txtText = document.getElementById('txtText')

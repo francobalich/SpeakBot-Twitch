@@ -1,4 +1,5 @@
 /* global SpeechSynthesisUtterance, speechSynthesis */
+/* exported tts */
 
 class TTS {
   #voices
@@ -51,3 +52,5 @@ class TTS {
 }
 
 const tts = new TTS()
+
+export default tts
