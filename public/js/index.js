@@ -7,7 +7,7 @@ const txtUsername = document.getElementById('txtUsername')
 const txtText = document.getElementById('txtText')
 const msgBox = document.getElementById('msgBox')
 
-// La comunicacion por Sockets la realizaremos por el puerto 3000
+// La comunicacion por Sockets la realizaremos por el puerto 5100
 const socket = io('http://localhost:5100/')
 
 // Funciones
@@ -17,7 +17,7 @@ const ocultarMensaje = () => {
 const ttsSpeak = (message) => {
   tts.speak(message, 'es-AR', 1)
 }
-// Socket para el nombre de usaurio
+// Socket para el nombre de usuario
 socket.on('username', (data) => {
   txtUsername.innerHTML = data
 })
